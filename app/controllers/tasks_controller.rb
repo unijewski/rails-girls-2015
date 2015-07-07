@@ -8,6 +8,18 @@ class TasksController < ApplicationController
     redirect_to(root_path)
   end
 
+  def closed
+    @task = Task.find(params[:id])
+    @task.update(closed: true)
+    redirect_to(root_path)
+  end
+
+  def opened
+    @task = Task.find(params[:id])
+    @task.update(closed: false)
+    redirect_to(root_path)
+  end
+
   private
 
   def task_params
