@@ -2,10 +2,10 @@
   <h1>My first Todo application</h1>
 </header>
 <section class='todo-main'>
-  <form name="input" action="html_form_action.asp" method="get">
-    <input type="text" name="user" placeholder='Type new Todo here'>
-    <input type="submit" value="Create Todo">
-  </form>
+  <%= form_for(Task.new) do |form| %>
+    <%= form.text_field(:body, placeholder: 'Type here') %>
+    <%= form.submit %>
+  <% end %>
   <ul class='todo-list'>
     <% @tasks.each do |task| %>
       <li><%= task.body %></li>
