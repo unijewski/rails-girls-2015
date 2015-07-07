@@ -8,7 +8,17 @@
   <% end %>
   <ul class='todo-list'>
     <% @tasks.each do |task| %>
-      <li><%= task.body %></li>
+      <li>
+        <% if task.closed? %>
+          <span class='task-closed'>
+            <%= task.body %>
+            <%= link_to 'Open', opened_task_path(task), method: :put, class: 'task-action' %>
+          </span>
+        <% else %>
+          <%= task.body %>
+          <%= link_to 'Close', closed_task_path(task), method: :put, class: 'task-action' %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </section>
