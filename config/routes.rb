@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   root 'tasks#index'
 
-  resources :tasks
+  resources :tasks do
+    member do
+      put 'closed'
+      put 'opened'
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
