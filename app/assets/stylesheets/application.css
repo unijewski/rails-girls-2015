@@ -44,6 +44,20 @@ body {
   padding-left: 20px;
 }
 
+.todo-list .task-action {
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  top: 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+.todo-list .task-closed {
+  color: #d1d1d1;
+  text-decoration: line-through;
+}
+
 input[type='text'], input[type='submit'] {
   padding: 10px;
   background: rgba(0, 0, 0, 0.02);
