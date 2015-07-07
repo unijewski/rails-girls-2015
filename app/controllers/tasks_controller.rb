@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :find_task, only: [:closed, :opened]
+
   def index
     @tasks = Task.all
   end
@@ -9,18 +11,20 @@ class TasksController < ApplicationController
   end
 
   def closed
-    @task = Task.find(params[:id])
     @task.update(closed: true)
     redirect_to(root_path)
   end
 
   def opened
-    @task = Task.find(params[:id])
     @task.update(closed: false)
     redirect_to(root_path)
   end
 
   private
+
+  def find_task
+    @task = Task.find(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:body)
